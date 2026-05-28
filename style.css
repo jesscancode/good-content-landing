@@ -81,7 +81,7 @@ body {
 /* ── Flip wrapper (handles tilt + perspective) ── */
 .polaroid-flip {
   perspective: 1000px;
-  max-width: 260px;
+  max-width: 300px;
   width: 100%;
   transform: rotate(-2.5deg);
   transition: transform 0.4s var(--spring);
@@ -97,6 +97,7 @@ body {
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.7s var(--spring);
+  min-height: 520px;
 }
 
 .polaroid-flip-inner.flipped {
@@ -547,11 +548,11 @@ body {
   }
 
   .polaroid-flip.is-flipped {
-    min-height: 560px;
+    min-height: 640px;
   }
 
   .polaroid-flip-inner.flipped {
-    min-height: 560px;
+    min-height: 640px;
   }
 
   .polaroid-jess-card {
