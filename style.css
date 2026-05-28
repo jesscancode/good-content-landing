@@ -559,6 +559,12 @@ body {
 
   .polaroid-flip-inner {
     min-height: 0;
+    transform-style: flat;
+    transform: none !important;
+  }
+
+  .polaroid-back {
+    display: none;
   }
 
   .polaroid-flip {
