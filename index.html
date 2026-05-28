@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Content ✦ creategoodcontent.com</title>
+  <meta name="description" content="Good Content — AI strategy, content, AEO, and customer research. Something great is coming.">
+  <meta property="og:title" content="Good Content ✦">
+  <meta property="og:description" content="Hi, I'm Jess. I help companies build smarter, create better content, and understand their customers.">
+  <meta property="og:url" content="https://creategoodcontent.com">
+  <link rel="icon" type="image/x-icon" href="logo/star.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-logo">✦ Good Content</span>
+    <span class="nav-domain">creategoodcontent.com</span>
+  </nav>
+
+  <main class="main">
+
+    <!-- LEFT: Polaroid -->
+    <section class="polaroid-section">
+      <div class="polaroid" role="img" aria-label="Photo of Jess">
+        <div class="polaroid-img">
+          <img src="assets/photo-cv_small.png" alt="Jess, founder of Good Content">
+        </div>
+        <p class="polaroid-caption">Jess ✦ Good Content</p>
+      </div>
+    </section>
+
+    <!-- RIGHT: Typography + full-bleed GIF layer -->
+    <section class="copy-section">
+
+      <!-- GIF layer: lives behind all copy, each at a unique angle -->
+      <div class="gif-layer" aria-hidden="true">
+        <div class="gif-bg" data-gif="assets/1-ai-westworld-dolores.gif"></div>
+        <div class="gif-bg" data-gif="assets/2-content-brilliant.gif"></div>
+        <div class="gif-bg" data-gif="assets/3-AEO.gif"></div>
+        <div class="gif-bg" data-gif="assets/4-date-everywhere-data.gif"></div>
+        <div class="gif-bg" data-gif="assets/5-timmy-celebration.gif"></div>
+      </div>
+
+      <!-- Copy: sits above the GIF layer -->
+      <p class="intro">Hi, I'm <strong>Jess</strong> from<br><strong>Good Content <span class="hero-star" title="hover me">✦</span></strong></p>
+      <p class="intro-sub">I help companies:</p>
+
+      <ul class="services-list" id="servicesList">
+        <li class="service-item" data-index="0">
+          <span class="bullet" aria-hidden="true">✦</span>
+          <span class="service-text">Build smarter products and operations with AI</span>
+        </li>
+
+        <li class="service-item" data-index="1">
+          <span class="bullet" aria-hidden="true">✦</span>
+          <span class="service-text">Create content strategies that last</span>
+        </li>
+
+        <li class="service-item" data-index="2">
+          <span class="bullet" aria-hidden="true">✦</span>
+          <span class="service-text">Show up in search and rank with AEO</span>
+        </li>
+
+        <li class="service-item" data-index="3">
+          <span class="bullet" aria-hidden="true">✦</span>
+          <span class="service-text">Understand their competitive edge through customer research (WhatsApp, email, real conversations)</span>
+        </li>
+
+        <li class="service-item side-quest-item" data-index="4">
+          <span class="service-text"><em>Current side quest:</em> building a South African tech newsletter and job platform.</span>
+        </li>
+      </ul>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>© 2025 Good Content ✦ New website coming.</span>
+  </footer>
+
+  <!-- Service info card drawer -->
+  <div class="card-overlay" id="cardOverlay"></div>
+  <div class="service-card" id="serviceCard" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="card-inner">
+      <button class="card-close" id="cardClose">✦ close</button>
+      <p class="card-label" id="cardLabel"></p>
+      <h2 class="card-title" id="cardTitle"></h2>
+      <p class="card-desc" id="cardDesc"></p>
+      <ul class="card-points" id="cardPoints"></ul>
+      <a class="card-cta" href="mailto:jess@creategoodcontent.com">Get in touch →</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
