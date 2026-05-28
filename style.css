@@ -227,21 +227,29 @@ body {
 }
 
 /* ── Click hint ── */
-@keyframes hint-bob {
-  0%, 100% { transform: translateY(0);   opacity: 0.45; }
-  50%       { transform: translateY(-4px); opacity: 1; }
+@keyframes hint-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .polaroid-click-hint {
   text-align: center;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--black);
-  margin-top: 0.3rem;
-  animation: hint-bob 1.8s ease-in-out infinite;
+  font-size: 0.65rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  margin-top: 0.4rem;
   user-select: none;
+  background: linear-gradient(90deg,
+    #aaa 20%,
+    #111 40%,
+    #aaa 60%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hint-shimmer 2.8s linear infinite;
 }
 
 /* ─── COPY SECTION ─── */
