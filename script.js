@@ -223,23 +223,29 @@
 
   // TCG tilt + shimmer
   if (pikaWrap) {
+    var pikaShimmer = pikaWrap.querySelector('.pika-shimmer');
+
+    pikaWrap.addEventListener('mouseenter', function () {
+      pikaWrap.classList.add('is-tilting');
+    });
+
     pikaWrap.addEventListener('mousemove', function (e) {
       var rect = pikaWrap.getBoundingClientRect();
-      var nx = (e.clientX - rect.left) / rect.width;   // 0–1
-      var ny = (e.clientY - rect.top)  / rect.height;  // 0–1
-      var rx =  (0.5 - ny) * 25;   // rotateX: tilt up/down
-      var ry =  (nx - 0.5) * 25;   // rotateY: tilt left/right
+      var nx = (e.clientX - rect.left) / rect.width;
+      var ny = (e.clientY - rect.top)  / rect.height;
+      var rx =  (0.5 - ny) * 25;
+      var ry =  (nx - 0.5) * 25;
       pikaWrap.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
       pikaWrap.style.boxShadow = (ry * -1.2) + 'px ' + (rx * 1.2) + 'px 48px rgba(0,0,0,0.35)';
-      var shimmer = pikaWrap.querySelector('.pika-shimmer');
-      if (shimmer) {
-        shimmer.style.setProperty('--mx', (nx * 100) + '%');
-        shimmer.style.setProperty('--my', (ny * 100) + '%');
+      if (pikaShimmer) {
+        pikaShimmer.style.setProperty('--mx', (nx * 100) + '%');
+        pikaShimmer.style.setProperty('--my', (ny * 100) + '%');
       }
     });
 
     pikaWrap.addEventListener('mouseleave', function () {
-      pikaWrap.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      pikaWrap.classList.remove('is-tilting');
+      pikaWrap.style.transform = '';
       pikaWrap.style.boxShadow = '';
     });
   }

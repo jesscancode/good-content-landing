@@ -531,8 +531,8 @@ body {
   cursor: pointer;
 }
 
-.pika-card-wrap:hover {
-  animation-play-state: paused;
+.pika-card-wrap.is-tilting {
+  animation: none;
   transition: transform 0.08s ease-out, box-shadow 0.08s ease-out;
 }
 
