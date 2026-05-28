@@ -190,6 +190,7 @@
   if (polaroidFlip && polaroidFlipInner) {
     polaroidFlip.addEventListener('click', function () {
       polaroidFlipInner.classList.toggle('flipped');
+      polaroidFlip.classList.toggle('is-flipped');
     });
   }
 

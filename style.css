@@ -533,7 +533,11 @@ body {
     margin: 0 auto;
   }
 
-  .polaroid-flip-inner {
+  .polaroid-flip {
+    transition: transform 0.4s var(--spring), min-height 0.5s ease;
+  }
+
+  .polaroid-flip.is-flipped {
     min-height: 460px;
   }
 
