@@ -55,8 +55,25 @@
   var overlay = document.getElementById('cardOverlay');
   var closeBtn = document.getElementById('cardClose');
 
-  function lockScroll()   { document.body.style.overflow = 'hidden'; }
-  function unlockScroll() { document.body.style.overflow = ''; }
+  var savedScrollY = 0;
+  function lockScroll() {
+    savedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + savedScrollY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+  }
+  function unlockScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, savedScrollY);
+  }
 
   function showCard(idx) {
     var data = cardData[idx];
