@@ -78,29 +78,105 @@ body {
   align-items: center;
 }
 
+/* ── Flip wrapper (handles tilt + perspective) ── */
+.polaroid-flip {
+  perspective: 1000px;
+  max-width: 260px;
+  width: 100%;
+  transform: rotate(-2.5deg);
+  transition: transform 0.4s var(--spring);
+  cursor: pointer;
+}
+
+.polaroid-flip:hover {
+  transform: rotate(0.5deg) translateY(-10px);
+}
+
+/* ── Inner wrapper (handles the actual flip rotation) ── */
+.polaroid-flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--spring);
+}
+
+.polaroid-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* ── Shared face styles ── */
 .polaroid {
   background: var(--white);
-  padding: 1.25rem 1.25rem 3.5rem;
+  padding: 1.25rem 1.25rem 2.5rem;
   border: 1.5px solid var(--border);
   box-shadow:
     5px 5px 0 0 var(--black),
     10px 10px 40px rgba(0, 0, 0, 0.12);
-  transform: rotate(-2.5deg);
-  transition:
-    transform 0.4s var(--spring),
-    box-shadow 0.4s var(--spring);
-  max-width: 260px;
   width: 100%;
-  cursor: default;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-.polaroid:hover {
-  transform: rotate(0.5deg) translateY(-10px);
+.polaroid-flip:hover .polaroid-front {
   box-shadow:
     7px 7px 0 0 var(--black),
     16px 20px 50px rgba(0, 0, 0, 0.18);
 }
 
+/* ── Front face ── */
+.polaroid-front {
+  position: relative;
+}
+
+/* ── Back face ── */
+.polaroid-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  box-shadow:
+    5px 5px 0 0 rgba(255,255,255,0.15),
+    10px 10px 40px rgba(0, 0, 0, 0.25);
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+.polaroid-back-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  scrollbar-width: none;
+}
+.polaroid-back-content::-webkit-scrollbar { display: none; }
+
+.polaroid-bio-lead {
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--white);
+}
+
+.polaroid-bio {
+  font-size: 0.68rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.75);
+}
+
+.polaroid-caption-back {
+  color: rgba(255,255,255,0.4);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 0.6rem;
+  margin-top: 0;
+}
+
+/* ── Photo ── */
 .polaroid-img {
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -117,7 +193,7 @@ body {
   transition: filter 0.3s ease;
 }
 
-.polaroid:hover .polaroid-img img {
+.polaroid-flip:hover .polaroid-img img {
   filter: grayscale(0%);
 }
 
@@ -141,13 +217,31 @@ body {
 }
 
 .polaroid-caption {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   text-align: center;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--black);
+}
+
+/* ── Click hint ── */
+@keyframes hint-bob {
+  0%, 100% { transform: translateY(0);   opacity: 0.45; }
+  50%       { transform: translateY(-4px); opacity: 1; }
+}
+
+.polaroid-click-hint {
+  text-align: center;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-top: 0.3rem;
+  animation: hint-bob 1.8s ease-in-out infinite;
+  user-select: none;
 }
 
 /* ─── COPY SECTION ─── */
@@ -389,7 +483,7 @@ body {
     padding-top: 0.5rem;
   }
 
-  .polaroid {
+  .polaroid-flip {
     max-width: 200px;
     margin: 0 auto;
   }
@@ -408,7 +502,7 @@ body {
 }
 
 @media (max-width: 380px) {
-  .polaroid {
+  .polaroid-flip {
     max-width: 170px;
   }
 }
@@ -741,10 +835,12 @@ body {
 /* ─── REDUCED MOTION ─── */
 
 @media (prefers-reduced-motion: reduce) {
-  .polaroid,
+  .polaroid-flip,
+  .polaroid-flip-inner,
   .gif-bg,
   .bullet,
   .service-text {
     transition: none;
+    animation: none;
   }
 }

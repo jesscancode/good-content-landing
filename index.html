@@ -23,13 +23,30 @@
 
   <main class="main">
 
-    <!-- LEFT: Polaroid -->
+    <!-- LEFT: Polaroid (flip card) -->
     <section class="polaroid-section">
-      <div class="polaroid" role="img" aria-label="Photo of Jess">
-        <div class="polaroid-img">
-          <img src="assets/photo-cv_small.png" alt="Jess, founder of Good Content">
+      <div class="polaroid-flip" id="polaroidFlip">
+        <div class="polaroid-flip-inner" id="polaroidFlipInner">
+
+          <!-- FRONT -->
+          <div class="polaroid polaroid-front">
+            <div class="polaroid-img">
+              <img src="assets/photo-cv_small.png" alt="Jess, founder of Good Content">
+            </div>
+            <p class="polaroid-caption">About Me</p>
+            <p class="polaroid-click-hint">click here ↺</p>
+          </div>
+
+          <!-- BACK -->
+          <div class="polaroid polaroid-back">
+            <div class="polaroid-back-content">
+              <p class="polaroid-bio-lead">Strategic Operator and Social Worker with 10+ years of experience designing systems, managing people, and helping early-stage orgs scale.</p>
+              <p class="polaroid-bio">I've helped organizations sharpen their strategic edge through competitive intelligence, organizational design, and AI-enabled strategy. I bring mixed-methods research, systems thinking, and an unexpectedly useful social work background, solving complex business problems with empathy, analytical rigor and human insight.</p>
+            </div>
+            <p class="polaroid-caption polaroid-caption-back">Jess ✦ Good Content</p>
+          </div>
+
         </div>
-        <p class="polaroid-caption">Jess ✦ Good Content</p>
       </div>
     </section>
 

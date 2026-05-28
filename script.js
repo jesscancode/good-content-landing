@@ -183,6 +183,16 @@
     document.addEventListener('click', deactivateAll);
   }
 
+  // ─── Polaroid flip ───────────────────────────────────────────
+  var polaroidFlip      = document.getElementById('polaroidFlip');
+  var polaroidFlipInner = document.getElementById('polaroidFlipInner');
+
+  if (polaroidFlip && polaroidFlipInner) {
+    polaroidFlip.addEventListener('click', function () {
+      polaroidFlipInner.classList.toggle('flipped');
+    });
+  }
+
   // ─── Pikachu easter egg ───────────────────────────────────────
   var pikachu     = document.querySelector('.pikachu');
   var pikaOverlay = document.getElementById('pikaOverlay');
