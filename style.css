@@ -541,6 +541,10 @@ body {
     min-height: 460px;
   }
 
+  .polaroid-flip-inner.flipped {
+    min-height: 460px;
+  }
+
   .polaroid-jess-card {
     display: none;
   }
