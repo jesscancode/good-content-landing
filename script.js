@@ -55,6 +55,9 @@
   var overlay = document.getElementById('cardOverlay');
   var closeBtn = document.getElementById('cardClose');
 
+  function lockScroll()   { document.body.style.overflow = 'hidden'; }
+  function unlockScroll() { document.body.style.overflow = ''; }
+
   function showCard(idx) {
     var data = cardData[idx];
     if (!data) return;
@@ -71,12 +74,14 @@
     card.classList.add('visible');
     card.setAttribute('aria-hidden', 'false');
     overlay.classList.add('visible');
+    lockScroll();
   }
 
   function hideCard() {
     card.classList.remove('visible');
     card.setAttribute('aria-hidden', 'true');
     overlay.classList.remove('visible');
+    unlockScroll();
   }
 
   closeBtn.addEventListener('click', function () {
@@ -205,12 +210,14 @@
     pikaOverlay.classList.add('visible');
     pikaModal.classList.add('visible');
     pikaModal.setAttribute('aria-hidden', 'false');
+    lockScroll();
   }
 
   function hidePika() {
     pikaOverlay.classList.remove('visible');
     pikaModal.classList.remove('visible');
     pikaModal.setAttribute('aria-hidden', 'true');
+    unlockScroll();
   }
 
   if (pikachu) {
