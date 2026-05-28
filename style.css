@@ -481,8 +481,7 @@ body {
 
 /* Active text states */
 .service-item.active .service-text {
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  opacity: 1;
 }
 
 .service-item.active .bullet {
