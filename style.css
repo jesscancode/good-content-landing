@@ -557,6 +557,10 @@ body {
     margin: 0 auto;
   }
 
+  .polaroid-flip-inner {
+    min-height: 0;
+  }
+
   .polaroid-flip {
     transition: transform 0.4s var(--spring), min-height 0.5s ease;
   }
@@ -647,6 +651,7 @@ body {
   gap: 0.4rem;
   padding: 0;
   margin-bottom: 1.25rem;
+  margin-left: auto;
   transition: color 0.2s ease;
 }
 
