@@ -533,6 +533,10 @@ body {
     margin: 0 auto;
   }
 
+  .polaroid-flip-inner {
+    min-height: 460px;
+  }
+
   .copy-section {
     min-height: 0;
   }
