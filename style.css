@@ -54,6 +54,12 @@ body {
   color: var(--grey);
   letter-spacing: 0.06em;
   text-transform: lowercase;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-domain:hover {
+  color: var(--black);
 }
 
 /* ─── MAIN GRID ─── */
@@ -450,6 +456,15 @@ body {
 .side-quest-item:hover .service-text {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.sq-highlight {
+  transition: color 0.2s ease, font-weight 0.1s ease;
+}
+
+.side-quest-item:hover .sq-highlight {
+  color: #0d73e7;
+  font-weight: 700;
 }
 
 @keyframes arrow-nudge {
