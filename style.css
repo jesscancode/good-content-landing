@@ -511,7 +511,7 @@ body {
 
 @media (max-width: 767px) {
   .nav {
-    padding: 1.1rem 1.25rem;
+    display: none;
   }
 
   .nav-domain {
