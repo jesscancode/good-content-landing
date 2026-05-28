@@ -127,6 +127,27 @@ body {
   position: relative;
 }
 
+.polaroid-linkedin {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.polaroid-linkedin svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.polaroid-linkedin:hover {
+  color: var(--white);
+  transform: scale(1.12);
+}
+
 .polaroid-jess-card {
   position: absolute;
   bottom: 0;
