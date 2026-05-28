@@ -250,25 +250,6 @@ body {
   filter: grayscale(0%);
 }
 
-.polaroid-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background: #d4d4d4;
-}
-
-.polaroid-placeholder span {
-  font-size: 0.7rem;
-  color: #777;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-}
-
 .polaroid-caption {
   margin-top: 0.75rem;
   text-align: center;
@@ -527,7 +508,6 @@ body {
   height: 80px;
   width: auto;
   opacity: 0.06;
-  pointer-events: none;
   display: block;
 }
 
@@ -662,15 +642,6 @@ body {
 }
 
 .bio-close:hover { color: var(--white); }
-
-.bio-modal-eyebrow {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 0.75rem;
-}
 
 .bio-modal-lead {
   font-size: 1rem;

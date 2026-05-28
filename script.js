@@ -97,14 +97,6 @@
   });
   overlay.addEventListener('click', hideCard);
 
-  // Open card CTA in background tab
-  var cardCta = document.querySelector('.card-cta');
-  if (cardCta) {
-    cardCta.addEventListener('click', function (e) {
-      // mailto: links don't need background-tab treatment, let them behave normally
-    });
-  }
-
   // ─── GIF activate / deactivate ────────────────────────────────
   var leaveTimer = null;
 
@@ -151,16 +143,6 @@
     heroStar.addEventListener('animationend', function () {
       heroStar.classList.remove('spinning');
     });
-  }
-
-  // ─── Side quest navigation ────────────────────────────────────
-  function navigateSideQuest(e) {
-    e.stopPropagation();
-    activate(sideQuest);
-    setTimeout(function () {
-      var tab = window.open('https://getajobintech.co.za', '_blank');
-      if (tab) { tab.blur(); window.focus(); }
-    }, 520);
   }
 
   // ─── Service item interactions ────────────────────────────────
@@ -210,7 +192,8 @@
   }
 
   if (polaroidFlip && polaroidFlipInner) {
-    polaroidFlip.addEventListener('click', function () {
+    polaroidFlip.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
       if (window.matchMedia('(max-width: 767px)').matches) {
         showBioModal();
       } else {
@@ -256,7 +239,6 @@
   }
 
   if (pikachu) {
-    pikachu.style.pointerEvents = 'all';
     pikachu.addEventListener('click', showPika);
   }
 
