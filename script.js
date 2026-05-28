@@ -188,16 +188,51 @@
     document.addEventListener('click', deactivateAll);
   }
 
-  // ─── Polaroid flip ───────────────────────────────────────────
+  // ─── Polaroid flip (desktop) / bio modal (mobile) ────────────
   var polaroidFlip      = document.getElementById('polaroidFlip');
   var polaroidFlipInner = document.getElementById('polaroidFlipInner');
+  var bioOverlay        = document.getElementById('bioOverlay');
+  var bioModal          = document.getElementById('bioModal');
+  var bioClose          = document.getElementById('bioClose');
+
+  function showBioModal() {
+    bioOverlay.classList.add('visible');
+    bioModal.classList.add('visible');
+    bioModal.setAttribute('aria-hidden', 'false');
+    lockScroll();
+  }
+
+  function hideBioModal() {
+    bioOverlay.classList.remove('visible');
+    bioModal.classList.remove('visible');
+    bioModal.setAttribute('aria-hidden', 'true');
+    unlockScroll();
+  }
 
   if (polaroidFlip && polaroidFlipInner) {
     polaroidFlip.addEventListener('click', function () {
-      polaroidFlipInner.classList.toggle('flipped');
-      polaroidFlip.classList.toggle('is-flipped');
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        showBioModal();
+      } else {
+        polaroidFlipInner.classList.toggle('flipped');
+        polaroidFlip.classList.toggle('is-flipped');
+      }
     });
   }
+
+  bioClose.addEventListener('click', function () {
+    var star = bioClose.querySelector('.close-star');
+    if (star) {
+      star.classList.remove('spinning');
+      void star.offsetWidth;
+      star.classList.add('spinning');
+      setTimeout(hideBioModal, 380);
+    } else {
+      hideBioModal();
+    }
+  });
+
+  bioOverlay.addEventListener('click', hideBioModal);
 
   // ─── Pikachu easter egg ───────────────────────────────────────
   var pikachu     = document.querySelector('.pikachu');

@@ -577,6 +577,118 @@ body {
   }
 }
 
+/* ─── BIO MODAL (mobile bottom sheet) ─── */
+
+.bio-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.bio-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.bio-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 20px 20px 0 0;
+  padding: 1.5rem 1.5rem 2.5rem;
+  max-height: 82vh;
+  overflow-y: auto;
+  z-index: 201;
+  transform: translateY(100%);
+  transition: transform 0.45s var(--spring);
+  scrollbar-width: none;
+}
+
+.bio-modal::-webkit-scrollbar { display: none; }
+
+.bio-modal.visible {
+  transform: translateY(0);
+}
+
+.bio-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  margin-bottom: 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.bio-close:hover { color: var(--white); }
+
+.bio-modal-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.75rem;
+}
+
+.bio-modal-lead {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.bio-modal-body {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 1.5rem;
+}
+
+.bio-modal-social {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.bio-modal-linkedin,
+.bio-modal-whatsapp {
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.bio-modal-linkedin svg,
+.bio-modal-whatsapp svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.bio-modal-linkedin:hover,
+.bio-modal-whatsapp:hover {
+  color: var(--white);
+  transform: scale(1.12);
+}
+
 /* ─── PIKACHU EASTER EGG MODAL ─── */
 
 .pikachu {
