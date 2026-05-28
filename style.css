@@ -127,6 +127,16 @@ body {
   position: relative;
 }
 
+.polaroid-jess-card {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 72px;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
 /* ── Back face ── */
 .polaroid-back {
   position: absolute;
