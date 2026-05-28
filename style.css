@@ -662,6 +662,19 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.pika-link {
+  color: var(--black);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,0.25);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.pika-link:hover {
+  text-decoration-color: var(--black);
+}
+
 @keyframes pika-float {
   0%   { transform: rotateX(0deg) rotateY(0deg) translateY(0px);    box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
   50%  { transform: rotateX(3deg) rotateY(-2deg) translateY(-8px);  box-shadow: 0 24px 56px rgba(0,0,0,0.18); }
