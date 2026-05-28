@@ -187,14 +187,14 @@ body {
 .polaroid-back-content::-webkit-scrollbar { display: none; }
 
 .polaroid-bio-lead {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.55;
   color: var(--white);
 }
 
 .polaroid-bio {
-  font-size: 0.68rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   line-height: 1.6;
   color: rgba(255,255,255,0.75);
@@ -538,11 +538,11 @@ body {
   }
 
   .polaroid-flip.is-flipped {
-    min-height: 460px;
+    min-height: 560px;
   }
 
   .polaroid-flip-inner.flipped {
-    min-height: 460px;
+    min-height: 560px;
   }
 
   .polaroid-jess-card {
