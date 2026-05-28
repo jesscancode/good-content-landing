@@ -79,7 +79,17 @@
     overlay.classList.remove('visible');
   }
 
-  closeBtn.addEventListener('click', hideCard);
+  closeBtn.addEventListener('click', function () {
+    var star = closeBtn.querySelector('.close-star');
+    if (star) {
+      star.classList.remove('spinning');
+      void star.offsetWidth;
+      star.classList.add('spinning');
+      setTimeout(hideCard, 380);
+    } else {
+      hideCard();
+    }
+  });
   overlay.addEventListener('click', hideCard);
 
   // Open card CTA in background tab
@@ -91,7 +101,10 @@
   }
 
   // ─── GIF activate / deactivate ────────────────────────────────
+  var leaveTimer = null;
+
   function activate(item) {
+    if (leaveTimer) { clearTimeout(leaveTimer); leaveTimer = null; }
     var idx = parseInt(item.dataset.index, 10);
     deactivateAll();
     item.classList.add('active');
@@ -104,6 +117,10 @@
     items.forEach(function (i) { i.classList.remove('active'); });
     gifBgs.forEach(function (b) { b.classList.remove('active'); });
     list.classList.remove('has-active');
+  }
+
+  function deferDeactivate() {
+    leaveTimer = setTimeout(deactivateAll, 90);
   }
 
   function loadGif(bg) {
@@ -146,13 +163,8 @@
   // Touch: tap opens card
   if (hasHover) {
     items.forEach(function (item) {
-      if (item === sideQuest) {
-        item.addEventListener('mouseenter', function () { activate(item); });
-        item.addEventListener('mouseleave', deactivateAll);
-        return;
-      }
       item.addEventListener('mouseenter', function () { activate(item); });
-      item.addEventListener('mouseleave', deactivateAll);
+      item.addEventListener('mouseleave', deferDeactivate);
     });
   }
 
@@ -169,5 +181,66 @@
   // Tap outside to deactivate GIF (touch only)
   if (!hasHover) {
     document.addEventListener('click', deactivateAll);
+  }
+
+  // ─── Pikachu easter egg ───────────────────────────────────────
+  var pikachu     = document.querySelector('.pikachu');
+  var pikaOverlay = document.getElementById('pikaOverlay');
+  var pikaModal   = document.getElementById('pikaModal');
+  var pikaClose   = document.getElementById('pikaClose');
+  var pikaWrap    = document.getElementById('pikaCardWrap');
+
+  function showPika() {
+    pikaOverlay.classList.add('visible');
+    pikaModal.classList.add('visible');
+    pikaModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function hidePika() {
+    pikaOverlay.classList.remove('visible');
+    pikaModal.classList.remove('visible');
+    pikaModal.setAttribute('aria-hidden', 'true');
+  }
+
+  if (pikachu) {
+    pikachu.style.pointerEvents = 'all';
+    pikachu.addEventListener('click', showPika);
+  }
+
+  pikaOverlay.addEventListener('click', hidePika);
+
+  pikaClose.addEventListener('click', function () {
+    var star = pikaClose.querySelector('.close-star');
+    if (star) {
+      star.classList.remove('spinning');
+      void star.offsetWidth;
+      star.classList.add('spinning');
+      setTimeout(hidePika, 380);
+    } else {
+      hidePika();
+    }
+  });
+
+  // TCG tilt + shimmer
+  if (pikaWrap) {
+    pikaWrap.addEventListener('mousemove', function (e) {
+      var rect = pikaWrap.getBoundingClientRect();
+      var nx = (e.clientX - rect.left) / rect.width;   // 0–1
+      var ny = (e.clientY - rect.top)  / rect.height;  // 0–1
+      var rx =  (0.5 - ny) * 25;   // rotateX: tilt up/down
+      var ry =  (nx - 0.5) * 25;   // rotateY: tilt left/right
+      pikaWrap.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+      pikaWrap.style.boxShadow = (ry * -1.2) + 'px ' + (rx * 1.2) + 'px 48px rgba(0,0,0,0.35)';
+      var shimmer = pikaWrap.querySelector('.pika-shimmer');
+      if (shimmer) {
+        shimmer.style.setProperty('--mx', (nx * 100) + '%');
+        shimmer.style.setProperty('--my', (ny * 100) + '%');
+      }
+    });
+
+    pikaWrap.addEventListener('mouseleave', function () {
+      pikaWrap.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      pikaWrap.style.boxShadow = '';
+    });
   }
 })();

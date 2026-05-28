@@ -81,13 +81,29 @@
 
   <footer class="footer">
     <span>© 2025 Good Content ✦ New website coming.</span>
+    <img class="pikachu" src="assets/pikachu.svg" alt="" aria-hidden="true">
   </footer>
+
+  <!-- Pikachu easter egg modal -->
+  <div class="pika-overlay" id="pikaOverlay"></div>
+  <div class="pika-modal" id="pikaModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="pika-close" id="pikaClose"><span class="close-star">✦</span> close</button>
+    <p class="pika-eyebrow">ooh, you found him! ✦</p>
+    <h2 class="pika-title">My other side quest</h2>
+    <p class="pika-desc">I am on an arguably unreasonable quest to find this exact card — Detective Pikachu #098/SV-P — look how cute. Well done for spotting him. If you have leads, you know what to do. PIKA-CHUUU!</p>
+    <div class="pika-card-scene" id="pikaCardScene">
+      <div class="pika-card-wrap" id="pikaCardWrap">
+        <img class="pika-card-img" src="pikachu-098.jpg" alt="Pikachu 098 Pokemon card">
+        <div class="pika-shimmer" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- Service info card drawer -->
   <div class="card-overlay" id="cardOverlay"></div>
   <div class="service-card" id="serviceCard" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="card-inner">
-      <button class="card-close" id="cardClose">✦ close</button>
+      <button class="card-close" id="cardClose"><span class="close-star">✦</span> close</button>
       <p class="card-label" id="cardLabel"></p>
       <h2 class="card-title" id="cardTitle"></h2>
       <p class="card-desc" id="cardDesc"></p>
