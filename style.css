@@ -956,6 +956,16 @@ body {
   margin-bottom: 1.75rem;
 }
 
+.card-points span[title] {
+  cursor: help;
+  border-bottom: 1px dotted rgba(255,255,255,0.4);
+  transition: border-color 0.2s ease;
+}
+
+.card-points span[title]:hover {
+  border-bottom-color: rgba(255,255,255,0.8);
+}
+
 .card-points {
   list-style: none;
   display: flex;

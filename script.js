@@ -10,11 +10,11 @@
   var cardData = [
     {
       label: 'What this means',
-      title: 'Build smarter products and operations with AI',
-      desc: 'Most businesses are drowning in manual work that AI tools can already handle. I map your workflows, identify exactly where AI saves time or money, and help you implement it.',
+      title: 'Build smarter products and operations with AI Tools',
+      desc: 'Most businesses are drowning in manual work that new tools can already handle. I map your workflows, identify exactly where these tools save time and money, and help you implement it.',
       points: [
-        'AI audit of your existing tools and processes',
-        'Specific automation recommendations with real tools',
+        'Audit of your existing workflows and processes',
+        'Create SOPs to recommend specific automation tools',
         'Implementation support or a clean hand-off to your team'
       ]
     },
@@ -85,7 +85,7 @@
     ul.innerHTML = '';
     data.points.forEach(function (p) {
       var li = document.createElement('li');
-      li.textContent = p;
+      li.innerHTML = p.replace(/SOPs/g, '<span title="Standard Operating Procedures — documented step-by-step processes for how to do things">SOPs</span>');
       ul.appendChild(li);
     });
     card.classList.add('visible');
